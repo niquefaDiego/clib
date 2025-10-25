@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "defaultProfile",
+      "includePath": [
+        "${workspaceFolder}/lib/**"
+      ],
+      "defines": []
+    }
+  ],
+  "version": 4
+}

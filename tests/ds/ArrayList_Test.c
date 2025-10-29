@@ -23,6 +23,8 @@ void Test1() {
   for (int i = 0; i < expectedListLength; ++i) {
     assert(actualArray[i] == expectedList[i]);
   }
+
+  ArrayList_Free(arrayList);
 }
 
 
@@ -42,6 +44,8 @@ void Test2() {
   for (int i = 0; i < expectedListLength; ++i) {
     assert(strcmp(actualArray[i],expectedList[i]) == 0);
   }
+
+  ArrayList_Free(arrayList);
 }
 
 int main()

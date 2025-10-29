@@ -1,5 +1,8 @@
 #ifndef CLIB_DS__DOUBLY_LINKED_LIST_H
 #define CLIB_DS__DOUBLY_LINKED_LIST_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct DoublyLinkedListNode {
   struct DoublyLinkedListNode *prev;
@@ -27,4 +30,7 @@ void DoublyLinkedList_RPush(
   struct DoublyLinkedListNode **tailRef,
   struct DoublyLinkedListNode *newNode);
 
+#ifdef __cplusplus
+}
 #endif
+#endif // CLIB_DS__DOUBLY_LINKED_LIST_H

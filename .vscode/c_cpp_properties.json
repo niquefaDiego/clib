@@ -3,7 +3,7 @@
     {
       "name": "defaultProfile",
       "includePath": [
-        "${workspaceFolder}/lib/**"
+        "${workspaceFolder}/include/**"
       ],
       "defines": []
     }

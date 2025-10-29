@@ -6,6 +6,7 @@ My personal C library.
 
 - Linux OS or WSL.
 - `gcc`
+- `valgrind` (`$ sudo apt install valgrind`).
 
 ## How to run
 

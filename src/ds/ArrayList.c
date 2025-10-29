@@ -14,6 +14,12 @@ ArrayList_t* ArrayList_New(size_t elementSize, size_t capacity)
   return list;
 }
 
+void ArrayList_Free(ArrayList_t* arrayList)
+{
+  free(arrayList->array);
+  free(arrayList);
+}
+
 void ArrayList_EnsureCapacity(ArrayList_t* list, size_t elementSize)
 {
   assert(list);

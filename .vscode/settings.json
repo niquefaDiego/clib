@@ -4,6 +4,6 @@
     "editor.detectIndentation": false,
     "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
     "files.associations": {
-      "assert.h": "c"
+      "*.h": "c"
     }
 }

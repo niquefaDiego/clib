@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf bin/*
+rm -rf build/*
 
 BOLD=$(tput bold)
 GREEN=$(tput setaf 2)
@@ -18,29 +18,40 @@ CompileAndRunTest() {
   echo "${CYAN}${BOLD} -> Test ${totalTestCount}: ${pathToTest}${RESET}"
   echo "${CYAN}[$pathToTest] Compiling...${RESET}"
   cFilePath="./src/$pathToTest.c"
-  hFilePath="./lib/$pathToTest.h"
-  cTestFilePath="./test/$pathToTest""_Test.c"
-  binaryFilePath="./bin/$pathToTest"
+  hFilePath="./include/$pathToTest.h"
+  cTestFilePath="./tests/$pathToTest""_Test.c"
+  binaryFilePath="./build/$pathToTest"
   mkdir -p $(dirname $binaryFilePath)  # ensure folder for executable exists
-  gcc -std=c2x -I ./lib $cTestFilePath $cFilePath -o $binaryFilePath
+  gcc -std=c2x -I ./include $cTestFilePath $cFilePath -o $binaryFilePath
 
   if [ $? -ne 0 ]; then
-    echo "${RED}[$pathToTest] Compilation failed, see error above.${RESET}"
+    echo "${RED}[$pathToTest] Compilation failed, see error above.${RESET}\n"
     return 1
   fi
 
   echo "${CYAN}[$pathToTest] Running test code: ${cTestFilePath}${RESET}"
-  $binaryFilePath
-  if [ $? -ne 0 ]; then
-    echo "${RED}[$pathToTest] Test failed with status: $?${RESET}"
-  fi
+  valgrind --leak-check=full --quiet --error-exitcode=10 ./$binaryFilePath
+  statusCode=$?
+  case "$statusCode" in
+    "0")
+      testPassedCount=$((testPassedCount+1))
+      echo "${GREEN}[$pathToTest] Test passed!${RESET}\n"
+      ;;
+    "10")
+      echo "${RED}[$pathToTest] Test failed with status: ${statusCode} (valgrind found a memory leak)${RESET}\n"
+      ;;
+    "134")
+      echo "${RED}[$pathToTest] Test failed with status: ${statusCode} (assertion failed)${RESET}\n"
+      ;;
+    *)
+      echo "${RED}[$pathToTest] Test failed with status: ${statusCode}${RESET}\n"
+      ;;
+  esac
 
-  echo "${GREEN}[$pathToTest] Test passed!${RESET}"
-  echo
-  testPassedCount=$((testPassedCount+1))
   return 0
 }
 
+CompileAndRunTest "array/Sort"
 CompileAndRunTest "ds/DoublyLinkedList"
 CompileAndRunTest "ds/ArrayList"
 

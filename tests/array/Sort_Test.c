@@ -1,6 +1,6 @@
-#include "array/Sort.h"
 #include <stdio.h>
 #include <assert.h>
+#include <array/Sort.h>
 
 int main()
 {

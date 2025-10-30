@@ -4,31 +4,33 @@
 extern "C" {
 #endif
 
-struct DoublyLinkedListNode {
-  struct DoublyLinkedListNode *prev;
-  struct DoublyLinkedListNode *next;
+struct _DoublyLinkedListNodeStruct {
+  struct _DoublyLinkedListNodeStruct *prev;
+  struct _DoublyLinkedListNodeStruct *next;
   unsigned char data[];
-};
+} ;
 
-struct DoublyLinkedListNode* DoublyLinkedListNode_New(size_t dataSize);
+typedef struct _DoublyLinkedListNodeStruct DoublyLinkedListNode;
+
+DoublyLinkedListNode* DoublyLinkedListNode_New(size_t dataSize);
 
 void DoublyLinkedListNode_InsertAfter(
-  struct DoublyLinkedListNode **nodeRef,
-  struct DoublyLinkedListNode *toInsert);
+  DoublyLinkedListNode **nodeRef,
+  DoublyLinkedListNode *toInsert);
 
 void DoublyLinkedListNode_InsertBefore(
-  struct DoublyLinkedListNode **nodeRef,
-  struct DoublyLinkedListNode *toInsert);
+  DoublyLinkedListNode **nodeRef,
+  DoublyLinkedListNode *toInsert);
 
 void DoublyLinkedList_LPush(
-  struct DoublyLinkedListNode **headRef,
-  struct DoublyLinkedListNode **tailRef,
-  struct DoublyLinkedListNode *newNode);
+  DoublyLinkedListNode **headRef,
+  DoublyLinkedListNode **tailRef,
+  DoublyLinkedListNode *newNode);
 
 void DoublyLinkedList_RPush(
-  struct DoublyLinkedListNode **headRef,
-  struct DoublyLinkedListNode **tailRef,
-  struct DoublyLinkedListNode *newNode);
+  DoublyLinkedListNode **headRef,
+  DoublyLinkedListNode **tailRef,
+  DoublyLinkedListNode *newNode);
 
 #ifdef __cplusplus
 }

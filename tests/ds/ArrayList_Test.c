@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include "ds/ArrayList.h"
+#include <ds/ArrayList.h>
 
 void Test1() {
-  ArrayList_t* arrayList = ArrayList_New(sizeof(int), 2);
+  ArrayList* arrayList = ArrayList_New(sizeof(int), 2);
 
   int expectedList[] = { 0, 3, 5, 10, 20, 25 };
   int expectedListLength = 6;
@@ -29,7 +29,7 @@ void Test1() {
 
 
 void Test2() {
-  ArrayList_t* arrayList = ArrayList_New(sizeof(char*), 2);
+  ArrayList* arrayList = ArrayList_New(sizeof(char*), 2);
 
   const char* expectedList[] = { "foo", "bar", "magic" };
   int expectedListLength = 3;

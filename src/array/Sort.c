@@ -1,7 +1,7 @@
-#include "array/Sort.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <array/Sort.h>
 
 #define swap(x,y) { tmpForSwap=x; x=y; y=tmpForSwap;}
 #define lt(a,b) ((a)<(b))

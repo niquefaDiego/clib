@@ -1,21 +1,21 @@
 #include <stdlib.h>
 #include <assert.h>
-#include "ds/DoublyLinkedList.h"
+#include <ds/DoublyLinkedList.h>
 
-typedef struct DoublyLinkedListNode node_t;
+#define Node DoublyLinkedListNode
 
-node_t* DoublyLinkedListNode_New(size_t dataSize)
+Node* DoublyLinkedListNode_New(size_t dataSize)
 {
   assert(dataSize > 0);
-  node_t* newNode = (node_t*) malloc(sizeof(node_t) + dataSize);
+  Node* newNode = (Node*) malloc(sizeof(Node) + dataSize);
   newNode->next = newNode->prev = 0;
   return newNode;
 }
 
-void DoublyLinkedListNode_InsertAfter(node_t **nodeRef, node_t *toInsert)
+void DoublyLinkedListNode_InsertAfter(Node **nodeRef, Node *toInsert)
 {
-  node_t* node = *nodeRef;
-  node_t *tmp = node->next; // new order is: node -> toInsert -> tmp
+  Node* node = *nodeRef;
+  Node *tmp = node->next; // new order is: node -> toInsert -> tmp
   node->next = toInsert;
   toInsert->prev = node;
   if (tmp) {
@@ -24,10 +24,10 @@ void DoublyLinkedListNode_InsertAfter(node_t **nodeRef, node_t *toInsert)
   }
 }
 
-void DoublyLinkedListNode_InsertBefore(node_t **nodeRef, node_t *toInsert)
+void DoublyLinkedListNode_InsertBefore(Node **nodeRef, Node *toInsert)
 {
-  node_t* node = *nodeRef;
-  node_t *tmp = node->prev; // new order is: tmp -> toInsert -> node
+  Node* node = *nodeRef;
+  Node *tmp = node->prev; // new order is: tmp -> toInsert -> node
   node->prev = toInsert;
   toInsert->next = node;
   if (tmp) {
@@ -36,7 +36,7 @@ void DoublyLinkedListNode_InsertBefore(node_t **nodeRef, node_t *toInsert)
   }
 }
 
-void DoublyLinkedList_LPush(node_t **headRef, node_t **tailRef, node_t *newNode) {
+void DoublyLinkedList_LPush(Node **headRef, Node **tailRef, Node *newNode) {
   if (*headRef == NULL) {
     assert(*tailRef == NULL);
     *headRef = *tailRef = newNode;
@@ -47,7 +47,7 @@ void DoublyLinkedList_LPush(node_t **headRef, node_t **tailRef, node_t *newNode)
   }
 }
 
-void DoublyLinkedList_RPush(node_t **headRef, node_t **tailRef, node_t *newNode) {
+void DoublyLinkedList_RPush(Node **headRef, Node **tailRef, Node *newNode) {
   if (*headRef == NULL) {
     assert(*tailRef == NULL);
     *headRef = *tailRef = newNode;

@@ -4,20 +4,16 @@
 extern "C" {
 #endif
 
-struct ArrayList {
+typedef struct {
   void *array;
   size_t size;
   size_t capacity;
-};
+}  ArrayList;
 
-typedef struct ArrayList ArrayList_t;
-
-ArrayList_t* ArrayList_New(size_t elementSize, size_t capacity);
-void ArrayList_Free(ArrayList_t*);
-void ArrayList_EnsureCapacity(ArrayList_t* list, size_t elementSize);
+ArrayList* ArrayList_New(size_t elementSize, size_t capacity);
+void ArrayList_Free(ArrayList* list);
+void ArrayList_EnsureCapacity(ArrayList* list, size_t elementSize);
 #define ArrayList_Push(list,dataType,value) { ArrayList_EnsureCapacity(list,sizeof(dataType)); ((dataType*)list->array)[list->size++] = value; }
-
-int AddThreeNumber(int a, int b, int c);
 
 #ifdef __cplusplus
 }

@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include "ds/DoublyLinkedList.h"
+#include <ds/DoublyLinkedList.h>
 
-typedef struct DoublyLinkedListNode node_t;
+typedef DoublyLinkedListNode Node;
 
-node_t* newWrappedInt(int x) {
-  node_t *node = DoublyLinkedListNode_New(sizeof(int));
+Node* newWrappedInt(int x) {
+  Node *node = DoublyLinkedListNode_New(sizeof(int));
   memcpy(node->data, (char*) &x, sizeof(int));
   return node;
 }
 
-int unwrapInt(node_t* node) {
+int unwrapInt(Node* node) {
   return *((int*)node->data);
 }
 
@@ -21,7 +21,7 @@ int expectedListLength = 6;
 
 int main()
 {
-  node_t *head = 0, *tail = 0;
+  Node *head = 0, *tail = 0;
 
   DoublyLinkedList_RPush(&head, &tail, newWrappedInt(10));
   DoublyLinkedList_RPush(&head, &tail, newWrappedInt(20));
@@ -31,7 +31,7 @@ int main()
   DoublyLinkedList_RPush(&head, &tail, newWrappedInt(25));
   
   // iterate forward
-  node_t *node = head;
+  Node *node = head;
   int i = 0;
   while (node) {
     assert(i < expectedListLength && unwrapInt(node) == expectedList[i++]);
@@ -42,7 +42,7 @@ int main()
   // iterate backwards and free memory
   node = tail;
   i = expectedListLength - 1;
-  node_t *toFree = 0;
+  Node *toFree = 0;
   while (node) {
     assert(i >= 0 && unwrapInt(node) == expectedList[i--]);
     toFree = node;

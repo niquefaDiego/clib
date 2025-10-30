@@ -1,10 +1,9 @@
-#include <String.h>
+#include <ds/String.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 #include <string.h>
 
-char* readToken(FILE* stream) {
+String* String_ReadToken(FILE* stream) {
   int c;
   size_t capacity = 4, i = 0;
   char* s = malloc(capacity);
@@ -20,6 +19,16 @@ char* readToken(FILE* stream) {
     if (i == capacity)
       s = realloc(s, capacity *= 2);
   }
-  s[i++] = '\0';
-  return realloc(s, i+1);
+  String* ret = malloc(sizeof(String));
+  s[ret->size = i++] = '\0';
+  ret->str = s;
+  ret->capacity = capacity;
+  return  ret;
+}
+
+void String_Free(String* string) {
+  if (string) {
+    free(string->str);
+    free(string);
+  }
 }

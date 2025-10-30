@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
-#include <array/Sort.h>
+#include <CLib.h>
 
 int main()
 {

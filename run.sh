@@ -19,8 +19,8 @@ CompileAndRunTest() {
   echo "${CYAN}[$pathToTest] Compiling...${RESET}"
   cFilePath="./src/$pathToTest.c"
   hFilePath="./include/$pathToTest.h"
-  cTestFilePath="./tests/$pathToTest""_Test.c"
-  binaryFilePath="./build/$pathToTest"
+  cTestFilePath="./tests/${pathToTest}_Test.c"
+  binaryFilePath="./build/tests/$pathToTest"
   mkdir -p $(dirname $binaryFilePath)  # ensure folder for executable exists
   gcc -std=c2x -I ./include $cTestFilePath $cFilePath -o $binaryFilePath
 
@@ -52,8 +52,9 @@ CompileAndRunTest() {
 }
 
 CompileAndRunTest "array/Sort"
-CompileAndRunTest "ds/DoublyLinkedList"
 CompileAndRunTest "ds/ArrayList"
+CompileAndRunTest "ds/DoublyLinkedList"
+CompileAndRunTest "ds/String"
 
 if [ $totalTestCount -eq 0 ]; then
   echo "ERROR: No tests were found"

@@ -16,8 +16,10 @@ ArrayList* ArrayList_New(size_t elementSize, size_t capacity)
 
 void ArrayList_Free(ArrayList* arrayList)
 {
-  free(arrayList->array);
-  free(arrayList);
+  if (arrayList) {
+    free(arrayList->array);
+    free(arrayList);
+  }
 }
 
 void ArrayList_EnsureCapacity(ArrayList* list, size_t elementSize)

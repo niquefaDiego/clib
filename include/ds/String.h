@@ -4,7 +4,21 @@
 extern "C" {
 #endif
 
-char* readToken(FILE* stream);
+#include <stdio.h>
+
+typedef struct {
+  char *str;
+  size_t size;
+  size_t capacity;
+} String;
+
+typedef struct {
+  char *str;
+  size_t size;
+} StringView;
+
+String* String_ReadToken(FILE*);
+void String_Free(String*);
 
 #ifdef __cplusplus
 }

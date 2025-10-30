@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <ds/ArrayList.h>
+#include <CLib.h>
 
 void Test1() {
   ArrayList* arrayList = ArrayList_New(sizeof(int), 2);

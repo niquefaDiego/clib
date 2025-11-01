@@ -1,5 +1,5 @@
-#ifndef CLIB_DS__DOUBLY_LINKED_LIST_H
-#define CLIB_DS__DOUBLY_LINKED_LIST_H
+#ifndef MYCSTD_DS__DOUBLY_LINKED_LIST_H
+#define MYCSTD_DS__DOUBLY_LINKED_LIST_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -35,4 +35,4 @@ void DoublyLinkedList_RPush(
 #ifdef __cplusplus
 }
 #endif
-#endif // CLIB_DS__DOUBLY_LINKED_LIST_H
+#endif // MYCSTD_DS__DOUBLY_LINKED_LIST_H

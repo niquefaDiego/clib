@@ -1,5 +1,5 @@
-#ifndef CLIB_ALGO__SORT_H
-#define CLIB_ALGO__SORT_H
+#ifndef MYCSTD_ALGO__SORT_H
+#define MYCSTD_ALGO__SORT_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -11,4 +11,4 @@ void Int_MergeSort(int* a, size_t n);
 #ifdef __cplusplus
 }
 #endif
-#endif // CLIB_ALGO__SORT_H
+#endif // MYCSTD_ALGO__SORT_H

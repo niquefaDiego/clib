@@ -1,4 +1,4 @@
-#include <CLib.h>
+#include <mycstd.h>
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
@@ -15,7 +15,7 @@ void assertNextToken(const char* expectedToken) {
 }
 
 int main() {
-  input = fopen("tests/ds/String_Test.input.txt", "r");
+  input = fopen("tests/ds/string_test.input.txt", "r");
 
   assertNextToken("this");
   assertNextToken("is");

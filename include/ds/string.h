@@ -1,5 +1,5 @@
-#ifndef CLIB_DS__STRING_H
-#define CLIB_DS__STRING_H
+#ifndef MYCSTD_DS__STRING_H
+#define MYCSTD_DS__STRING_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -23,4 +23,4 @@ void String_Free(String*);
 #ifdef __cplusplus
 }
 #endif
-#endif // CLIB_DS__STRING_H
+#endif // MYCSTD_DS__STRING_H

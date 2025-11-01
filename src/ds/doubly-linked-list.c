@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <assert.h>
-#include <ds/DoublyLinkedList.h>
+#include <ds/doubly-linked-list.h>
 
 #define Node DoublyLinkedListNode
 

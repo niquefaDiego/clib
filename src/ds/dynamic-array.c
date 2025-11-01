@@ -1,28 +1,28 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ds/ArrayList.h>
+#include <ds/dynamic-array.h>
 
 #define ARRAY_LIST_GROWTH_FACTOR 2
 
-ArrayList* ArrayList_New(size_t elementSize, size_t capacity)
+DynamicArray* DynamicArray_New(size_t elementSize, size_t capacity)
 {
-  ArrayList* list = (ArrayList*) malloc(sizeof(ArrayList));
+  DynamicArray* list = (DynamicArray*) malloc(sizeof(DynamicArray));
   list->capacity = capacity;
   list->size = 0;
   list->array = (void*) malloc(elementSize * capacity);
   return list;
 }
 
-void ArrayList_Free(ArrayList* arrayList)
+void DynamicArray_Free(DynamicArray* DynamicArray)
 {
-  if (arrayList) {
-    free(arrayList->array);
-    free(arrayList);
+  if (DynamicArray) {
+    free(DynamicArray->array);
+    free(DynamicArray);
   }
 }
 
-void ArrayList_EnsureCapacity(ArrayList* list, size_t elementSize)
+void DynamicArray_EnsureCapacity(DynamicArray* list, size_t elementSize)
 {
   assert(list);
   if (list->size == list->capacity) {

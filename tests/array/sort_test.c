@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
-#include <CLib.h>
+#include <mycstd.h>
 
 int main()
 {

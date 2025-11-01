@@ -14,7 +14,7 @@ includeFolder="./include"
 sharedLibraryFolder="${buildFolder}/library"
 mycstdSoPath="${sharedLibraryFolder}/libmycstd.so"
 
-IsCachedBinaryIsValid() {
+IsCachedBinaryStillValid() {
   folderPath=$1
   existingBinaryPath=$2
 
@@ -50,9 +50,9 @@ CompileMycstdLibrary() {
   echo "${CYAN}Set environment variable LD_LIBRARY_PATH=${LD_LIBRARY_PATH}${RESET}"
 
   mkdir -p $(dirname $mycstdSoPath)  # ensure folder for executable exists
-  IsCachedBinaryIsValid $sourceFolder $mycstdSoPath
+  IsCachedBinaryStillValid $sourceFolder $mycstdSoPath
   if [ $? -eq 1 ]; then
-    IsCachedBinaryIsValid $includeFolder $mycstdSoPath
+    IsCachedBinaryStillValid $includeFolder $mycstdSoPath
     if [ $? -eq 1 ]; then
       echo "${CYAN}No changes detected. Reusing existing binary $mycstdSoPath.${RESET}\n"
       return 0

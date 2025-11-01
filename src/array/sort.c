@@ -11,7 +11,7 @@ void MergeSort(T* a, size_t n, T* tmpArray)
 {
   static size_t i, j, k;
   static T tmpForSwap;
-  if (n <= 1) {
+  if (n <= 10) {
     for (i = 0; i+1 < n; i++)
       for (j = i+1; j < n; j++)
         if (lt(a[j],a[i]))
